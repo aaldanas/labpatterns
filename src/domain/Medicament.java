@@ -1,11 +1,10 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
+import factory.SymptomFactory;
 
 
 public class Medicament {
@@ -26,15 +25,19 @@ public class Medicament {
 		this.name = name;
 	}
 
-	public Symptom addSymptomByName(String symptom){
-		Symptom s=null;
-		s=createSymptom(symptom);
-		if (s!=null) {
-			symptoms.add(s);
-		}
-		return s;
-
+	public Symptom addSymptomByName(String symptomName, Integer w){
+	    SymptomFactory factory = SymptomFactory.getInstance();
+	    Symptom s = factory.createSymptom(symptomName);
+	    if (s != null) {
+	        if (!symptoms.contains(s)) { 
+	        	s.setSeverityIndex(w);
+	            symptoms.add(s);
+	           
+	        }
+	    }
+	    return s;
 	}
+
 	
 	public void removeSymptom(Symptom s){
 		symptoms.remove(s);
@@ -57,6 +60,7 @@ public class Medicament {
 		if (s!=null)removeSymptom(s);
 		return s;
 	}
+	/*
 	private Symptom createSymptom(String symptomName) {
 	    List<String> impact5 = Arrays.asList("fiebre", "tos seca", "astenia","expectoracion");
 	    List<Double> index5 = Arrays.asList(87.9, 67.7, 38.1, 33.4);
@@ -83,4 +87,5 @@ public class Medicament {
 	    }
 	    return null;		
 		
-	}}
+	}*/
+	}

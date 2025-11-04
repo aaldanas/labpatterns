@@ -1,12 +1,10 @@
 package domain;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 import java.util.Set;
+
+import factory.SymptomFactory;
 import iterator.Covid19PacientIterator;
 
 public class Covid19Pacient {
@@ -54,12 +52,13 @@ public class Covid19Pacient {
 	}
 	
 	public Symptom addSymptomByName(String symptom, Integer w){
-		Symptom s=null;
-		s=createSymptom(symptom); 
-		if (s!=null) 
-			symptoms.put(s,w);		
-		return s;
+	    SymptomFactory factory = SymptomFactory.getInstance();
+	    Symptom s = factory.createSymptom(symptom);
+	    if (s != null)
+	        symptoms.put(s, w);
+	    return s;
 	}
+
 
 	public Symptom removeSymptomByName(String symptomName) {
 		Symptom s=getSymptomByName(symptomName);
@@ -91,6 +90,7 @@ public class Covid19Pacient {
 		return impact;
 	}
 	
+	/*
 	private Symptom createSymptom(String symptomName) {
 	    List<String> impact5 = Arrays.asList("fiebre", "tos seca", "astenia","expectoracion");
 	    List<Double> index5 = Arrays.asList(87.9, 67.7, 38.1, 33.4);
@@ -118,5 +118,6 @@ public class Covid19Pacient {
 	    return null;		
 		
 	}
+	*/
 }
 
