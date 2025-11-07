@@ -5,7 +5,7 @@ public class Symptom {
 	private int covidImpact;
 	private int severityIndex;
 
-	public Symptom(String name, int covidImpact, int severityIndex) {
+	public Symptom(String name, int severityIndex, int covidImpact) {
 		this.name = name;
 		this.covidImpact = covidImpact;
 		this.severityIndex = severityIndex;

@@ -6,8 +6,6 @@ public class SymptomFactory {
 
     // Instancia única (Singleton)
     private static SymptomFactory instance = new SymptomFactory();
-
-    // Caché para garantizar unicidad (Flyweight)
     private Map<String, Symptom> cache = new HashMap<>();
 
     // Constructor privado
@@ -37,7 +35,6 @@ public class SymptomFactory {
                                              "congestión nasal", "hemoptisis",
                                              "congestion conjuntival", "mareos");
         List<Double> index1 = Arrays.asList(5.0, 4.8, 3.7, 0.9, 0.8, 0.7, 2.0);
-
         int impact = 0;
         double index = 0;
 
@@ -54,7 +51,7 @@ public class SymptomFactory {
 
         Symptom s = null;
         if (impact != 0) {
-            s = new Symptom(symptomName, impact, (int) index);
+            s = new Symptom(symptomName, impact , (int) index);
             cache.put(symptomName, s);
         }
 
