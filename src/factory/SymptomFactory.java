@@ -20,7 +20,7 @@ public class SymptomFactory {
     // Crea o recupera un síntoma según su nombre
     public Symptom createSymptom(String symptomName) {
 
-        // Si ya existe en caché, devuelve el mismo objeto
+        // Si ya existe, devuelve el mismo objeto
         if (cache.containsKey(symptomName)) {
             return cache.get(symptomName);
         }
@@ -41,7 +41,6 @@ public class SymptomFactory {
         int impact = 0;
         double index = 0;
 
-        // Determinar tipo e índice según el nombre
         if (impact5.contains(symptomName)) {
             impact = 5;
             index = index5.get(impact5.indexOf(symptomName));
@@ -55,7 +54,6 @@ public class SymptomFactory {
 
         Symptom s = null;
         if (impact != 0) {
-            // ⚠️ Aquí corregimos el orden de parámetros:
             s = new Symptom(symptomName, impact, (int) index);
             cache.put(symptomName, s);
         }

@@ -11,7 +11,6 @@ public class Medicament {
 	private String name;
 	private List<Symptom> symptoms=new ArrayList<Symptom>();
 
-
 	public String getName() {
 		return name;
 	}
@@ -25,14 +24,12 @@ public class Medicament {
 		this.name = name;
 	}
 
-	public Symptom addSymptomByName(String symptomName, Integer w){
+	public Symptom addSymptomByName(String symptomName){
 	    SymptomFactory factory = SymptomFactory.getInstance();
 	    Symptom s = factory.createSymptom(symptomName);
 	    if (s != null) {
 	        if (!symptoms.contains(s)) { 
-	        	s.setSeverityIndex(w);
 	            symptoms.add(s);
-	           
 	        }
 	    }
 	    return s;
